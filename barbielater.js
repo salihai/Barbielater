@@ -2,7 +2,8 @@ const express = require("express");
 
 const app = express();
 
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
+const { runGpt } = require("./library/chatgpt");
 
 app.use(express.urlencoded({extended: true}));
 
@@ -20,8 +21,11 @@ app.get('/', (req, res) => {
 app.post('/translate', (req, res) => {
 
     let text = req.body.text;
-    
-    res.send(text);
+   
+    const translate = runGpt(text, 'English', 'Turkish');
+    //console.log(translate);
+
+    res.send(translate);
 });
 
 app.get('/return', (req, res) => {
