@@ -4,6 +4,7 @@ const app = express();
 
 const bodyParser = require('body-parser');
 const { runGpt } = require("./library/chatgpt");
+const { runEden } = require("./library/edenai");
 
 app.use(express.urlencoded({extended: true}));
 
@@ -18,14 +19,20 @@ app.get('/', (req, res) => {
     res.send('Welcome to Barbielater!');
 });
 
-app.post('/translate', (req, res) => {
+ app.post('/translate',  (req, res) => {
 
     let text = req.body.text;
    
-    const translate = runGpt(text, 'English', 'Turkish');
+    //const translate = runGpt(text, 'English', 'Turkish');
     //console.log(translate);
 
-    res.send(translate);
+
+    runEden(text, 'en', 'tr');
+
+    //console.log(trEden);
+    //res.send(trEden);
+
+    
 });
 
 app.get('/return', (req, res) => {
