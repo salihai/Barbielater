@@ -27,10 +27,14 @@ app.get('/', (req, res) => {
     //console.log(translate);
 
 
-    runEden(text, 'en', 'tr');
+    runEden(text, 'en', 'tr').then((data) => {
+        res.status(200).send(data);
+    }).catch((err) => {
+        res.status(500).send('Something went wrong!');
+    });
 
     //console.log(trEden);
-    //res.send(trEden);
+    
 
     
 });
