@@ -17,7 +17,7 @@ const runEden = async (input, source_language, target_language) => {
         source_language: source_language,
         target_language: target_language
     })
-    console.log(translateResult.data.openai.text);
+    //console.log(translateResult.data.openai.text);
     return translateResult.data.openai.text;
     //.then(({ data }) => {console.log(data.openai.text);})
     //.catch(err => console.error(err));
